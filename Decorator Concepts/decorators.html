@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Decorator Analysis</title>
+    <style>
+        body {
+            background-color: #E0E1DD; /* Sky Blue */
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            padding-top: 50px;
+        }
+        .container {
+            width: 80%;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        .header {
+            background-color: #1B263B; /* Midnight Blue */
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        .content { padding: 40px; }
+        .feature-box {
+            border: 1px solid #778DA9;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .feature-box h3 { color: #1B263B; margin: 0; }
+        .btn {
+            background-color: #F3722C; /* Vibrant Orange */
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .btn:hover { background-color: #D95D1A; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>Advanced Python Decorators</h1>
+        <p>Dynamic Function Wrapping & Meta-Programming</p>
+    </div>
+    <div class="content">
+        <div class="feature-box">
+            <div>
+                <h3>Performance Tracker</h3>
+                <p>Monitors execution time and function latency.</p>
+            </div>
+            <a href="decorator_output.txt" target="_blank" class="btn">View Logs</a>
+        </div>
+
+        <div class="feature-box">
+            <div>
+                <h3>Authentication Wrapper</h3>
+                <p>Ensures login status before function execution.</p>
+            </div>
+            <a href="decorator_output.txt" target="_blank" class="btn">View Status</a>
+        </div>
+
+        <div class="feature-box">
+            <div>
+                <h3>Analytics Counter</h3>
+                <p>Tracks how many times a specific API or function is hit.</p>
+            </div>
+            <a href="decorator_output.txt" target="_blank" class="btn">View Count</a>
+        </div>
+    </div>
+</div>
+<script>
+    document.querySelectorAll('.btn').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            fetch(this.getAttribute('href'))
+                .then(response => response.text())
+                .then(data => {
+                    alert("Decorator Output:\n\n" + data);
+                })
+                .catch(err => alert("Error: Run the Python script first!"));
+        });
+    });
+</script>
+</body>
+</html>
